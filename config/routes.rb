@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get "site/index"
+
+  get "/login", to: "site#login", as: "login"
+
+  get "/logout", to: "site#logout", as: "logout"
+
+  get "/competences", to: "competences#index", as: "competences"
+
+  root "site#index"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

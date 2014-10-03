@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %title e-Competences
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %nav.navbar.navbar-default{role: "navigation"}
+      .container-fluid
+        .navbar-header
+          %button.navbar-toggle.collapsed{type: "button", data: {toggle: "collapse", target: "#bs-example-navbar-collapse-1"}}
+            %span.sr-only Toggle navigation
+            - 3.times do
+              %span.icon-bar
+          = link_to "e-Competences", root_url, class: "navbar-brand"
+        .collapse.navbar-collapse#bs-example-navbar-collapse-1
+          = render "layouts/user" unless session[:user_id].nil?
+          = link_to "Войти", login_path, class: "btn btn-default navbar-btn pull-right", type: "button" if session[:user_id].nil?
+          = link_to "Выйти", logout_path, class: "btn btn-danger navbar-btn pull-right", type: "button" unless session[:user_id].nil?
+    #content
+      = yield

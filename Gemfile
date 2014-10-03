@@ -6,7 +6,9 @@ gem 'rails', '4.1.6'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 # Use SCSS for stylesheets
+gem 'bootstrap-sass', '~> 3.2.0'
 gem 'sass-rails', '~> 4.0.3'
+gem 'autoprefixer-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -26,6 +28,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
+gem 'haml'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -41,6 +45,9 @@ gem 'spring',        group: :development
 group :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+  gem 'rack_session_access'
+  gem 'capybara'
+  gem 'webrat'
 end
 
 group :development, :test do
