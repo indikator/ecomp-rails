@@ -2,6 +2,7 @@
 %html
   %head
     %title e-Competences
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
@@ -18,5 +19,8 @@
           = render "layouts/user" unless session[:user_id].nil?
           = link_to "Войти", login_path, class: "btn btn-default navbar-btn pull-right", type: "button" if session[:user_id].nil?
           = link_to "Выйти", logout_path, class: "btn btn-danger navbar-btn pull-right", type: "button" unless session[:user_id].nil?
-    #content
-      = yield
+    .col-lg-10.col-lg-offset-1
+      #content
+        = yield
+    #toTop
+      %i.glyphicon.glyphicon-circle-arrow-up

@@ -1,2 +1,19 @@
+$font-family-sans-serif: "Ubuntu", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "competences";
+
+#toTop {
+  position: fixed;
+  bottom: 20px;
+  right: 3.3%;
+  cursor: pointer;
+  color: #888888;
+  font-size: 30px;
+  display: none;
+
+  &:hover {
+    color: #555555;
+  }
+}

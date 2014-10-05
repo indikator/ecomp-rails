@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get "/competences", to: "competences#index", as: "competences"
 
+  get "/employees", to: "employees#index", as: "employees"
+
   root "site#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

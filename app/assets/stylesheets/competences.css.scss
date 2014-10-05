@@ -1,0 +1,84 @@
+div#competence_groups {
+  position: relative;
+  width: auto;
+  height: auto;
+
+  div.competence_group {
+    min-height: 24px;
+    height: auto;
+    border: 1px solid black;
+    border-bottom: 0px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    color: #333;
+
+    div.competence_group_header {
+      padding: 3px 5px;
+      vertical-align: middle;
+
+      div.competence_level_title {
+        font-style: italic;
+        width: 320px;
+        text-align: center;
+      }
+    }
+    div.competences {
+      border-top: 1px solid black;
+      font-size: 15px;
+
+      div.competence {
+        border-bottom: 1px solid black;
+
+        div.competence_header {
+          cursor: pointer;
+          padding: 1px;
+          &:hover {
+            div.competence_hover.plus {
+              background-image: url("plus-hover.png");
+            }
+            div.competence_hover.minus {
+              background-image: url("minus-hover.png");
+            }
+          }
+
+          div.competence_hover {
+            height: 21px;
+            width: 21px;
+            background-size: cover;
+            float: left;
+            margin-right: 5px;
+          }
+
+          div.competence_hover.plus {
+            background-image: url("plus.png");
+          }
+          div.competence_hover.minus {
+            background-image: url("minus.png");
+          }
+
+          div.competence_levels {
+            font-size: 13px;
+            height: 23px;
+            width: auto;
+
+            div.competence_level {
+              border: 1px solid black;
+              height: 21px;
+              width: 63px;
+              margin-left: 1px;
+              background-color: white;
+              text-align: center;
+            }
+          }
+        }
+
+        div.competence_description {
+          height: auto;
+          border-top: 1px solid black;
+          display: none;
+          padding-left: 5px;
+        }
+      }
+    }
+  }
+}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141003180644) do
+ActiveRecord::Schema.define(version: 20141005103433) do
 
   create_table "colors", force: true do |t|
     t.string   "name"
@@ -35,16 +35,40 @@ ActiveRecord::Schema.define(version: 20141003180644) do
 
   add_index "competence_groups", ["color_id"], name: "index_competence_groups_on_color_id", using: :btree
 
+  create_table "competence_levels", force: true do |t|
+    t.integer  "level"
+    t.text     "description"
+    t.integer  "points",        default: 0
+    t.boolean  "visible",       default: true
+    t.integer  "competence_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "competence_levels", ["competence_id"], name: "index_competence_levels_on_competence_id", using: :btree
+
   create_table "competences", force: true do |t|
     t.string   "name"
     t.integer  "position"
     t.text     "description"
-    t.boolean  "visible"
+    t.boolean  "visible",             default: true
     t.integer  "competence_group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "competences", ["competence_group_id"], name: "index_competences_on_competence_group_id", using: :btree
+
+  create_table "employees", force: true do |t|
+    t.string   "fio"
+    t.string   "login"
+    t.string   "password"
+    t.integer  "director_id"
+    t.boolean  "fired"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "employees", ["director_id"], name: "index_employees_on_director_id", using: :btree
 
 end

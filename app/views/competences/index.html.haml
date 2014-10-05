@@ -1,4 +1,31 @@
-.col-lg-10.col-lg-offset-1
-  .list-group
-    - @competence_groups.each do |cg|
-      = link_to content_tag(:span, "", { class: "glyphicon glyphicon-plus", style: "font-size: 14px"}) + " " + [cg.position].pack("U") + ". " + cg.name, "#", class: "list-group-item", style: "background-color: #{cg.color.first}; font-size: 18px; font-weight: bold"
+#competence_groups
+  - @competence_groups.each do |cg|
+    .competence_group
+      .competence_group_header{style: "background-color: #{cg.color.first}"}
+        = [cg.position].pack("U") + ". " + cg.name
+        .competence_level_title.pull-right Уровни
+      .competences{style: "background-color: #{cg.color.second}"}
+        - cg.competences.each do |c|
+          .competence
+            .competence_header
+              .competence_hover.plus
+              = [cg.position].pack("U") + "." + c.position.to_s + ". " + c.name
+              .competence_levels.pull-right
+                - c.competence_levels.order("level DESC").each do |level|
+                  - if level.visible
+                    .competence_level.pull-right{style: "background-color: #{cg.color.first}"}
+                      = level.level
+                  - else
+                    .competence_level.pull-right{style: "background-color: white"}
+            .competence_description{style: "background-color: #{cg.color.third}"}
+              %i
+                %uОписание компетенции:
+              %p{style: "margin: 0px"}
+                = c.description
+              %i
+                %uОписание уровней компетенции:
+              - c.competence_levels.order(:level).each do |level|
+                - if level.visible
+                  %dl{style: "margin: 0px"}
+                    %dt Уровень #{level.level} (#{level.points} баллов)
+                    %dd #{level.description}

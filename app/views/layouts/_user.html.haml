@@ -1,9 +1,9 @@
 %ul.nav.navbar-nav
   %li{class: controller_name.eql?("employees") && "active"}
     = link_to "Сотрудники", "http://127.0.0.1:3000/employees"
-  %li{class: controller_name.eql?("projects") && "active"}
-    = link_to "Проекты", "http://127.0.0.1:3000/projects"
-  %li{class: controller_name.eql?("educations") && "active"}
-    = link_to "Обучение", "http://127.0.0.1:3000/educations"
+  -#%li{class: controller_name.eql?("projects") && "active"}
+  -#  = link_to "Проекты", "http://127.0.0.1:3000/projects"
+  -#%li{class: controller_name.eql?("educations") && "active"}
+  -#  = link_to "Обучение", "http://127.0.0.1:3000/educations"
   %li{class: controller_name.eql?("competences") && "active"}
-    = link_to "Компетенции", "http://127.0.0.1:3000/competences"
+    = link_to "Компетенции", competences_path
