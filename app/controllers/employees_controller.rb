@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
   def index
-    @employees = Employee.all
+    @employees = Employee.tree
   end
 end

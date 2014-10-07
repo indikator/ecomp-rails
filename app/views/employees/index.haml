@@ -1,0 +1,11 @@
+-#%ul
+-#  - @employees.each do |employee|
+-#    %li
+-#      = employee.fio
+%ul
+  %li
+    = @employees[:user].fio
+    %ul
+      - @employees[:subordinates].each do |sub|
+        %li
+          = sub.fio
