@@ -17,3 +17,22 @@ $font-family-sans-serif: "Ubuntu", "Helvetica Neue", Helvetica, Arial, sans-seri
     color: #555555;
   }
 }
+
+ul.nav.nav-tabs[role="tablist"] {
+  margin-bottom: 5px;
+}
+
+hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.panel-collapse {
+  .panel-body {
+    display: none;
+  }
+}
+
+.panel {
+  margin-bottom: 5px;
+}

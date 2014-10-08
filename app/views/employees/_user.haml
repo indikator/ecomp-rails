@@ -1,0 +1,19 @@
+.panel.panel-default{class: show_body.eql?(false) && "panel-collapse",  data: {user_id: "#{employee[:user].id}"}}
+  .panel-heading.finger
+    %h3.panel-title
+      - if employee[:user].fired
+        = content_tag(:s, employee[:user].fio)
+      - else
+        = employee[:user].fio
+  .panel-body
+    %ul.nav.nav-tabs{role: "tablist"}
+      %li.active= link_to 'Компетенции', "#user_competences_tab", role: "tab", data: {toggle: "tab"}
+      %li= link_to 'Знания, умения, навыки', "#user_knowskills_tab", role: "tab", data: {toggle: "tab"}
+      %li= link_to 'Обучение', "#user_educations_tab", role: "tab", data: {toggle: "tab"}
+    .tab-content
+      .tab-pane.active#user_competences_tab Содержание таба "Компетенции"
+      .tab-pane#user_knowskills_tab Содержание таба "Знания, умения, навыки"
+      .tab-pane#user_educations_tab Содержание таба "Обучение"
+      %hr
+    - employee[:subordinates].each do |subordinate|
+      = render "employees/user", employee: subordinate, show_body: false
