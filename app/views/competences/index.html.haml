@@ -7,7 +7,7 @@
       .competences{style: "background-color: #{cg.color.second}"}
         - cg.competences.each do |c|
           .competence
-            .competence_header
+            .competence_header.finger
               .competence_hover.plus
               = [cg.position].pack("U") + "." + c.position.to_s + ". " + c.name
               .competence_levels.pull-right
