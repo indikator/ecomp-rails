@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'admin/competences'
+
   get "site/index"
 
   get "/login", to: "site#login", as: "login"
