@@ -1,1 +1,3 @@
 = render "employees/user", employee: @employees, show_body: true
+- @employees[:colleagues].each do |colleague|
+  = render "employees/user", employee: colleague, show_body: false

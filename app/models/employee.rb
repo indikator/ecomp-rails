@@ -27,8 +27,14 @@ class Employee < ActiveRecord::Base
 
   def self.get_colleagues(user)
     return_ary = []
-    @all.select {|e| e.director_id == user.director_id && e.id != user.id}.each do |colleague|
-      return_ary << tree(colleague.id, false)
+    @all.select { |employee| employee.director_id == user.director_id && employee.id != user.id }.each do |colleague|
+      if @all.select {|e| e.director_id == user.id}.count > 0
+        # если я директор, то могу видеть коллег (сотрудников, у которых со мной один директор), которые являются как руководителями, так и нет
+        return_ary << tree(colleague.id, false)
+      else
+        # если я не директор, то могу видеть коллег (сотрудников, у которых со мной один директор), которые не являются руководителями
+        return_ary << tree(colleague.id, false) if @all.select {|e| e.director_id == colleague.id}.count == 0
+      end
     end
     return_ary
   end
