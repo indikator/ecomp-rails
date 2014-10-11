@@ -3,6 +3,8 @@ $font-family-sans-serif: "Ubuntu", "Helvetica Neue", Helvetica, Arial, sans-seri
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "competences";
+@import "admin";
+@import "jquery-ui";
 
 #toTop {
   position: fixed;

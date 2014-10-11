@@ -1,16 +1,17 @@
 .panel.panel-default
   .panel-heading
     %h3.panel-title Группы компетенций
-  .panel-body
+  .panel-body#admin_competence_groups
     - @groups.each do |group|
       .panel.panel-default
         .panel-body{style: "background-color: #{group.color.first}"}
-          = [group.position].pack("U") + ". "
-          = text_field_tag "group_name", group.name, class: "form-control", style: "display: inline-block; width: 25%; margin-left: 10px"
-          = select_tag "group_color", options_for_select(Color.option_for_select, group.color_id), class: "form-control", style: "display: inline-block; width: 25%; margin-left: 10px"
+          = content_tag(:strong, [group.position].pack("U") + ". ")
+          = text_field_tag "group_name", group.name, class: "form-control competence_input"
+          = select_tag "group_color", options_for_select(Color.option_for_select, group.color_id), class: "form-control competence_input"
           %button.btn.btn-default.pull-right Удалить
           %button.btn.btn-default.pull-right{style: "margin-right: 10px"} Скрыть
   .panel-footer
+    %button.btn.btn-primary Добавить группу компетенций
     %button.btn.btn-danger.pull-right Отменить
     %button.btn.btn-success.pull-right{style: "margin-right: 10px"} Применить
     .clearfix
