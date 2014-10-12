@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get "/employees", to: "employees#index", as: "employees"
 
+  get ':controller(/:action(/:id))'
+
   root "site#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

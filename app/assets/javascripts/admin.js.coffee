@@ -13,3 +13,19 @@ $(document).on "page:change", ->
     container = $(this).parent(".panel-body")
     color = $(this).children("option:selected").data "color"
     container.css("background-color", color)
+  $("#content").on "click", "button#add_competence_group", ->
+    container = $(this).parents("div.panel").children("div.panel-body")
+    max_pos = find_max_position
+    $.ajax
+      type: "GET",
+      dataType: "html" # Для корректного получения данных необходимо добавить эту строку
+      data: {position: max_pos}
+      url: "./new_competence_group",
+      success: (data) ->
+        container.append(data)
+find_max_position = ->
+  max = 0
+  $("#admin_competence_groups").find("div.panel-body.admin_competence_group strong").each ->
+    if $(this).data("groupPosition") > max
+      max = $(this).data("groupPosition")
+  max
