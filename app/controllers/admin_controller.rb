@@ -14,4 +14,14 @@ class AdminController < ApplicationController
       format.js { render partial: "admin/competence_group", locals: {group: @group } }
     end
   end
+
+  def update_competence_groups
+    groups = params[:groups]
+
+    groups.each do |key, group|
+      CompetenceGroup.update(group["id"].to_i, color_id: group["color"].to_i, position: group["position"].to_i, name: group["name"])
+    end
+
+    render text: "success"
+  end
 end

@@ -40,6 +40,26 @@ $(document).on "page:change", ->
     $(this).hide()
     parent.children("button.group_competence_hide").show()
 
+  $("#content").on "click", "button#competence_group_cancel", ->
+    $(this).parents("div.panel").children("div#admin_competence_groups").load("./competences #admin_competence_groups div.admin_competence_group")
+
+  $("#content").on "click", "button#competence_group_apply", ->
+    container = $(this).parents("div.panel").children("div#admin_competence_groups")
+    dom_groups = container.children("div.admin_competence_group")
+    groups = []
+    dom_groups.each ->
+      groups.push
+        id: $(this).attr("data-group-id"),
+        position: $(this).attr("data-group-position"),
+        color: $(this).find("select[name='group_color'] option:selected").val(),
+        name: $(this).find("input[name='group_name']").val()
+    $.ajax
+      type: "POST",
+#      dataType: "html",
+      url: "./update_competence_groups",
+      data: {groups: groups},
+      success: (data) ->
+        console.log data
 
 find_max_position = ->
   max = 0

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   get ':controller(/:action(/:id))'
 
+  post ':controller(/:action(/:id))'
+
   root "site#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

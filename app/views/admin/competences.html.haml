@@ -6,6 +6,6 @@
       = render "competence_group", group: group
   .panel-footer
     %button.btn.btn-primary#add_competence_group{data: {remote: true}} Добавить группу компетенций
-    %button.btn.btn-danger.pull-right Отменить
-    %button.btn.btn-success.pull-right{style: "margin-right: 10px"} Применить
+    %button.btn.btn-danger.pull-right#competence_group_cancel Отменить
+    %button.btn.btn-success.pull-right#competence_group_apply{style: "margin-right: 10px"} Применить
     .clearfix
