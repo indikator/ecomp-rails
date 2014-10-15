@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009180746) do
+ActiveRecord::Schema.define(version: 20141015135219) do
 
   create_table "colors", force: true do |t|
     t.string   "name"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20141009180746) do
     t.integer  "color_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "deleted",    default: false
   end
 
   add_index "competence_groups", ["color_id"], name: "index_competence_groups_on_color_id", using: :btree
@@ -53,6 +54,7 @@ ActiveRecord::Schema.define(version: 20141009180746) do
     t.integer  "competence_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "deleted",       default: false
   end
 
   add_index "competence_levels", ["competence_id"], name: "index_competence_levels_on_competence_id", using: :btree
@@ -65,6 +67,7 @@ ActiveRecord::Schema.define(version: 20141009180746) do
     t.integer  "competence_group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "deleted",             default: false
   end
 
   add_index "competences", ["competence_group_id"], name: "index_competences_on_competence_group_id", using: :btree
