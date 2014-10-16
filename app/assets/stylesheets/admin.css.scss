@@ -4,7 +4,12 @@
 .panel-body {
   .competence_input {
     display: inline-block;
-    width: 25%;
+    width: 30%;
     margin-left: 10px;
   }
+}
+
+.competence_invisible {
+  background-image: url("bg.png");
+  background-repeat: repeat;
 }

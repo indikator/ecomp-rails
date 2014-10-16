@@ -16,7 +16,7 @@ class AdminController < ApplicationController
   end
 
   def update_competence_groups
-    groups = params[:groups]
+    groups = competence_groups_params[:groups]
 
     groups.each do |key, group|
       if group["id"]
@@ -27,5 +27,11 @@ class AdminController < ApplicationController
     end
 
     render text: "success"
+  end
+
+  private
+
+  def competence_groups_params
+    params.permit(groups: [:id, :color, :position, :visible, :deleted, :name])
   end
 end

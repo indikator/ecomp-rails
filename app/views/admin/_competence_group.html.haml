@@ -1,4 +1,4 @@
-.panel.panel-default{class: "admin_competence_group", data: {group: {id: group.id, position: group.position, visible: group.visible.to_s, deleted: group.deleted.to_s}}, style: "background-color: #{group.color.first}"}
+.panel.panel-default.admin_competence_group{class: !group.visible && "competence_invisible", data: {group: {id: group.id, position: group.position, visible: group.visible.to_s, deleted: group.deleted.to_s}}, style: "background-color: #{group.color.first}"}
   .panel-body
     = content_tag(:strong, [group.position].pack("U") + ". ")
     = text_field_tag "group_name", group.name, class: "form-control competence_input", disabled: !group.visible

@@ -37,7 +37,7 @@ $(document).on "page:change", ->
     parent.children("select").attr("disabled", "disabled")
     parent.children("input").attr("disabled", "disabled")
     parent.children("button.group_competence_delete").attr("disabled", "disabled")
-    parent.parent().attr("data-group-visible", "false")
+    parent.parent().attr("data-group-visible", "false").addClass("competence_invisible")
 
   $("#content").on "click", "button.group_competence_show", ->
     parent = $(this).parent()
@@ -46,7 +46,7 @@ $(document).on "page:change", ->
     parent.children("select").removeAttr("disabled")
     parent.children("input").removeAttr("disabled")
     parent.children("button.group_competence_delete").removeAttr("disabled")
-    parent.parent().attr("data-group-visible", "true")
+    parent.parent().attr("data-group-visible", "true").removeClass("competence_invisible")
 
   $("#content").on "click", "button.group_competence_delete", ->
     me = $(this)

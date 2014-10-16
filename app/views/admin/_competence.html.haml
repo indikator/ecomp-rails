@@ -1,0 +1,4 @@
+.panel.panel-default{style: "background-color: #{group.color.second}"}
+  .panel-body
+    = content_tag(:strong, [group.position].pack("U") + "." + competence.position.to_s + ". ")
+    = text_field_tag "competence_name", competence.name, class: "form-control competence_input", disabled: !competence.visible

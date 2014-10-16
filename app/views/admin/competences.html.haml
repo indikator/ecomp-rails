@@ -12,3 +12,15 @@
     .clearfix
 
 %h2 Администрирование компетенций
+- @groups.each do |group|
+  .panel.panel-default
+    .panel-heading{style: "background-color: #{group.color.first}"}
+      %h3.panel-title= [group.position].pack("U") + ". " + group.name
+    .panel-body
+      - group.competences.each do |competence|
+        = render "competence", group: group, competence: competence
+    .panel-footer
+      %button.btn.btn-primary.add_competence{data: {remote: true}} Добавить компетенцию
+      %button.btn.btn-danger.pull-right.competence_cancel Отменить
+      %button.btn.btn-success.pull-right.competence_apply{style: "margin-right: 10px"} Применить
+      .clearfix
