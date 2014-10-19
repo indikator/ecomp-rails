@@ -38,6 +38,7 @@ $(document).on "page:change", ->
     parent.children("input").attr("disabled", "disabled")
     parent.children("button.group_competence_delete").attr("disabled", "disabled")
     parent.parent().attr("data-group-visible", "false").addClass("competence_invisible")
+    reordering_groups(0, 1, parent.parent())
 
   $("#content").on "click", "button.group_competence_show", ->
     parent = $(this).parent()
@@ -47,6 +48,7 @@ $(document).on "page:change", ->
     parent.children("input").removeAttr("disabled")
     parent.children("button.group_competence_delete").removeAttr("disabled")
     parent.parent().attr("data-group-visible", "true").removeClass("competence_invisible")
+    reordering_groups(0, 1, parent.parent())
 
   $("#content").on "click", "button.group_competence_delete", ->
     me = $(this)
@@ -88,7 +90,7 @@ find_max_position = ->
   max
 
 reordering_groups = (start, end, group) ->
-  groups = group.parent().children(".panel.admin_competence_group")
+  groups = group.parent().children(".panel.admin_competence_group:not(.competence_invisible)")
   if start != end
     new_pos = 1040
     groups.each (index, el) ->
